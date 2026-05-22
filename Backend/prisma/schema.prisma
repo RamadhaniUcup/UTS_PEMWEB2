@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("categories")
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  name        String
+  categoryId  Int      @map("category_id")
+  pembicaraId Int      @map("pembicara_id")
+  location    String
+  dateEvent   DateTime @map("date_event")
+  description String
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("events")
+}
+
+model Pembicara {
+  id        Int      @id @default(autoincrement())
+  name      String
+  role      String
+  image     String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("pembicara")
+}
