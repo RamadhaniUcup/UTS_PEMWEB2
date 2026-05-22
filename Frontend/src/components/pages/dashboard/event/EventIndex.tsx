@@ -105,7 +105,7 @@ export default function EventIndex() {
             <h2 className="font-extrabold text-xl text-gray-900 mb-4">{item.name}</h2>
             
             {/* Detail Informasi */}
-            <div className="space-y-2 text-sm text-gray-600 mb-4 flex-grow">
+            <div className="space-y-2 text-sm text-gray-600 mb-4 grow">
               <p><span className="font-semibold text-gray-900">Lokasi:</span> {item.location}</p>
               <p><span className="font-semibold text-gray-900">Tanggal:</span> {item.dateEvent ? new Date(item.dateEvent).toLocaleDateString("id-ID") : "-"}</p>
               <p><span className="font-semibold text-gray-900">Kategori:</span> {getCategoryName(item.categoryId)}</p>
