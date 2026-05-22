@@ -23,7 +23,7 @@ type Pembicara = {
   image: string;
 };
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://uts-pemweb-2-q2.vercel.app";
 
 export default function EventIndex() {
   const [events, setEvents] = useState<Event[]>([]);
