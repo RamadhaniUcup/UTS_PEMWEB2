@@ -14,7 +14,7 @@ const schema = z.object({
   name: z.string().min(1, "Nama Category harus diisi"),
 });
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://uts-pemweb-2-six.vercel.app";
 
 export default function CategoryUpdate() {
   const { id } = useParams();

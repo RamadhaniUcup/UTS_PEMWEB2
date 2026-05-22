@@ -8,7 +8,7 @@ type Pembicara = {
   image: string;
 };
 
-const API_URL = "https://uts-pemweb-2-q2.vercel.app";
+const API_URL = "https://uts-pemweb-2-six.vercel.app";
 
 export default function PembicaraIndex() {
   const [pembicara, setPembicara] = useState<Pembicara[]>([]);

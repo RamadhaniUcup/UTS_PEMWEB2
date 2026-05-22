@@ -17,7 +17,7 @@ const schema = z.object({
   image: z.string().min(1, "Image harus diisi"),
 });
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://uts-pemweb-2-six.vercel.app";
 
 export default function PembicaraCreate() {
   const navigate = useNavigate();

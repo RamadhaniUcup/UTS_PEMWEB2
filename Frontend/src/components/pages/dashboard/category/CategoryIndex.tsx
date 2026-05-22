@@ -6,7 +6,7 @@ type Category = {
   name: string;
 };
 
-const API_URL = "https://uts-pemweb-2-q2.vercel.app";
+const API_URL = "https://uts-pemweb-2-six.vercel.app";
 
 export default function CategoryIndex() {
   const [categories, setCategories] = useState<Category[]>([]);

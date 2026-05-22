@@ -36,7 +36,7 @@ const schema = z.object({
   pembicaraId: z.string().min(1, "Pembicara harus dipilih"),
 });
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://uts-pemweb-2-six.vercel.app";
 
 export default function EventCreate() {
   const navigate = useNavigate();
