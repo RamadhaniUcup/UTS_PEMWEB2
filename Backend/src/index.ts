@@ -25,8 +25,11 @@ app.use("/events", eventRoute);
 // Pembicara
 app.use("/pembicara", PembicaraRoute);
 
-app.listen(port, () => {
-  console.log(`Server jalan di http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+  });
+}
 
-;
+// BARIS INI WAJIB ADA UNTUK VERCEL
+export default app;
