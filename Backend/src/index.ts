@@ -4,6 +4,7 @@ import cors from "cors";
 import categoryRoute from "./route/categoryRoute.js";
 import eventRoute from "./route/eventRoute.js";
 import PembicaraRoute from "./route/pembicaraRoute.js";
+import authRoute from "./route/authRoute.js";
 
 const app = express();
 const port = 3000;
@@ -25,11 +26,16 @@ app.use("/events", eventRoute);
 // Pembicara
 app.use("/pembicara", PembicaraRoute);
 
+// Auth
+app.use("/auth", authRoute);
+
+
+
 if (process.env.NODE_ENV !== 'production') {
   app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+    console.log(`Server berjalan di http://localhost:${port}`);
   });
 }
 
-// BARIS INI WAJIB ADA UNTUK VERCEL
+
 export default app;
