@@ -7,19 +7,22 @@ import Button from "../../../ui/Button";
 
 type FormData = {
   name: string;
-  role: string;
-  image: string;
+  email: string;
+  password: string;
 };
 
 const schema = z.object({
-  name: z.string().min(1, "Nama pembicara harus diisi"),
-  role: z.string().min(1, "Role harus diisi"),
-  image: z.string().min(1, "Image harus diisi"),
+  name: z.string().min(1, "Nama user harus diisi"),
+  email: z
+    .string()
+    .min(1, "Email harus diisi")
+    .email("Format email tidak valid"),
+  password: z.string().min(1, "Password harus diisi"),
 });
 
 const API_URL = "http://localhost:3000";
 
-export default function PembicaraCreate() {
+export default function UserCreate() {
   const navigate = useNavigate();
 
   const {
@@ -33,31 +36,31 @@ export default function PembicaraCreate() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch(`${API_URL}/pembicara`, {
+      const response = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name: data.name,
-          role: data.role,
-          image: data.image,
+          email: data.email,
+          password: data.password,
         }),
       });
 
       const result = await response.json();
 
       if (!response.ok) {
-        alert(result.message || "Gagal menambahkan pembicara");
+        alert(result.message || "Gagal menambahkan user");
         return;
       }
 
-      alert("Pembicara berhasil ditambahkan");
+      alert("User berhasil ditambahkan");
       reset();
-      navigate("/dashboard/pembicara");
+      navigate("/dashboard/users");
     } catch (error) {
       console.error(error);
-      alert("Terjadi kesalahan saat menambahkan pembicara");
+      alert("Terjadi kesalahan saat menambahkan user");
     }
   };
 
@@ -65,33 +68,33 @@ export default function PembicaraCreate() {
     <div className="p-6 max-w-2xl mx-auto">
       <div className="bg-[#f8f5f0] rounded-2xl shadow-md p-8 border border-[#e0d6c8]">
         <h2 className="text-2xl font-bold text-[#3e2f1c] mb-6 border-b border-[#d6c7b2] pb-4">
-          Add New Pembicara
+          Add New User
         </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
           <InputText
-            label="Nama Pembicara"
+            label="Nama User"
             name="name"
             register={register}
             error={errors.name?.message}
           />
 
           <InputText
-            label="Role"
-            name="role"
+            label="Email"
+            name="email"
             register={register}
-            error={errors.role?.message}
+            error={errors.email?.message}
           />
 
           <InputText
-            label="Image"
-            name="image"
+            label="Password"
+            name="password"
             register={register}
-            error={errors.image?.message}
+            error={errors.password?.message}
           />
 
           <div className="flex justify-start mt-4">
-            <Button type="submit" label="Save Pembicara" />
+            <Button type="submit" label="Save User" />
           </div>
         </form>
       </div>

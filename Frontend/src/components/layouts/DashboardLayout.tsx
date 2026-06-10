@@ -17,6 +17,7 @@ export default function DashboardLayout() {
     { name: "Pembicara", path: "/dashboard/pembicara" },
     { name: "Biodata", path: "/dashboard/biodata" },
     { name: "Event", path: "/dashboard/event" },
+    { name: "Users", path: "/dashboard/users" },
   ];
 
   return (

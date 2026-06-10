@@ -8,7 +8,7 @@ type Pembicara = {
   image: string;
 };
 
-const API_URL = "https://uts-pemweb-2-six.vercel.app";
+const API_URL = "http://localhost:3000";
 
 export default function PembicaraIndex() {
   const [pembicara, setPembicara] = useState<Pembicara[]>([]);
@@ -66,10 +66,13 @@ export default function PembicaraIndex() {
             {/* Image Container */}
             <div className="mb-4">
               <img
-                src={item.image}
-                alt={item.name}
-                className="rounded-xl w-full h-48 object-cover shadow-sm"
-              />
+              src={item.image}
+              alt={item.name}
+              className="rounded-xl w-full h-48 object-cover shadow-sm"
+              onError={(e) => {
+                e.currentTarget.src = "https://i.pravatar.cc/300";
+              }}
+            />
             </div>
 
             {/* Info Text */}
